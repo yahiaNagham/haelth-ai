@@ -1,0 +1,177 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int    @id @default(autoincrement()) @map("ID_A")
+  firstname String @map("Firstname") @db.VarChar(100)
+  lastname  String @map("Lastname") @db.VarChar(100)
+  email     String @unique @map("Email") @db.VarChar(100)
+  password  String @map("Password") @db.VarChar(100)
+
+  @@map("admin")
+}
+model Appointment {
+  id          Int               @id @default(autoincrement()) @map("ID_App")
+  patientId   Int?              @map("patient_id")
+  familyFname String?           @map("family_fname") @db.VarChar(50)
+  familyLname String?           @map("family_lname") @db.VarChar(50)
+  date        DateTime?         @map("date") @db.Date
+  time        DateTime?         @map("time") @db.Time(0)
+  notes       String?           @map("notes") @db.VarChar(255)
+  status      AppointmentStatus @default(Pending) @map("status")
+  phone       String?           @map("phone") @db.VarChar(20)
+  email       String            @map("email") @db.VarChar(100)
+  @@index([patientId], map: "appointment_patient_id_fkey")
+  @@map("appointment")
+}
+
+model Patient {
+  id          Int         @id @default(autoincrement()) @map("ID_P")
+  firstname   String      @map("Firstname") @db.VarChar(100)
+  lastname    String      @map("Lastname") @db.VarChar(100)
+  dateOfBirth DateTime?   @map("DateOfBirth") @db.Date
+  email       String      @unique @map("Email") @db.VarChar(100)
+  password    String      @map("Password") @db.VarChar(100)
+  gender      Gender?     @map("Gender")
+  phone       String?     @map("Phone") @db.VarChar(20)
+  accountType AccountType @default(Standard) @map("accountType")
+  address     String?     @map("address") @db.Text
+  location    String?     @map("location") @db.Text
+
+  @@map("patient")
+}
+
+model MedicalTest {
+  id             Int        @id @default(autoincrement()) @map("ID_T")
+  patientId      Int        @map("patient_id")
+  appointmentId  Int        @map("appointment_id")
+  testType       String     @map("test_type") @db.VarChar(100)
+  status         TestStatus @default(Pending) @map("status")
+  resultFile     String?    @map("result_file") @db.VarChar(255)
+  adminNotes     String?    @map("admin_notes") @db.Text
+  createdAt      DateTime   @default(now()) @map("created_at")
+
+  @@index([patientId], map: "medicaltest_patient_id_fkey")
+  @@index([appointmentId], map: "medicaltest_appointment_id_fkey")
+  @@map("medicaltest")
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement()) @map("ID_N")
+  patientId Int      @map("patient_id")
+  message   String   @map("message") @db.Text
+  fileLink  String?  @map("file_link") @db.VarChar(255)
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([patientId], map: "notification_patient_id_fkey")
+  @@map("notification")
+}
+
+
+
+
+enum TestStatus {
+  Pending
+  Sent
+}
+
+
+enum AccountType {
+  Standard
+  Premium
+}
+
+enum Gender {
+  Male
+  Female
+}
+
+enum AppointmentStatus {
+  Pending
+  Confirmed
+  Cancelled
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+  reply     Reply?
+}
+
+model Reply {
+  id         Int      @id @default(autoincrement())
+  messageId  Int      @unique
+  response   String
+  createdAt  DateTime @default(now())
+  message    Message  @relation(fields: [messageId], references: [id])
+}
+
+
+// npx prisma db push --accept-data-loss
+// npx prisma generate
+// npx prisma migrate dev --name init

@@ -1,0 +1,135 @@
+.mainContent {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.mainContent.active {
+  width: calc(100% - 103px);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.sectionTitle {
+  font-weight: 500;
+}
+
+.cards {
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* توزيع البطاقات بشكل متجاوب */
+  gap: 20px; /* مسافة بين البطاقات */
+  width: 100%;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 20px;
+  min-width: 230px;
+  height: auto;
+  transition: .3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cardData {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card h1 {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.cardIconLg{
+  font-size: 80px;
+}
+
+.cardStats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.cardStats span {
+  display: flex;
+  align-items: center;
+}
+
+.cardIcon {
+  margin-right: 5px;
+}
+
+.statIcon {
+  color: #5f5ce0;
+}
+
+.upArrow {
+  color: #70d7a5;
+}
+
+.downArrow {
+  color: #e86786;
+}
+
+.card1 {
+  background-color: rgba(80, 115, 251, .1);
+}
+
+.card1 .cardTitle {
+  color: rgba(80, 115, 251, 1);
+}
+
+.card1 .cardIconLg {
+  color: rgba(80, 115, 251, .4);
+}
+
+.card2 {
+  background-color: rgba(241, 210, 67, .1);
+}
+
+.card2 .cardTitle {
+  color: rgba(241, 210, 67, 1);
+}
+
+.card2 .cardIconLg {
+  color: rgba(241, 210, 67, .4);
+}
+
+.card3 {
+  background-color: rgba(112, 215, 165, .1);
+}
+
+.card3 .cardTitle {
+  color: rgba(112, 215, 165, 1);
+}
+
+.card3 .cardIconLg {
+  color: rgba(112, 215, 165, .4);
+}
+
+.card4 {
+  background-color: rgba(227, 106, 200, .1);
+}
+
+.card4 .cardTitle {
+  color: rgba(227, 106, 200, 1);
+}
+
+.card4 .cardIconLg {
+  color: rgba(227, 106, 200, .4);
+}

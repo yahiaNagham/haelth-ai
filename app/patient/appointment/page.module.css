@@ -1,0 +1,170 @@
+.body {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.leftSection, .rightSection {
+  flex: 1;
+  min-width: 300px;
+}
+
+.formRow {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.submitBtn {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.leftSection {
+  flex: 1;
+  padding: 50px;
+  background-color: #f1f8ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rightSection {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.subtitle {
+  color: #3498db;
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.formTitle {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 0.5px solid #efeeee;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #f3f5f7;
+  color: #040404;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input:focus {
+  border-color: #3498db; /* تغيير لون الحدود عند التفاعل */
+  outline: none; /* إزالة الإطار الافتراضي */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* إضافة ظل عند التفاعل */
+}
+.input::placeholder {
+  color: #aaa; /* لون النص في الـ placeholder */
+  font-weight: 400; /* جعل النص غير ثقيل */
+}
+
+.formRow {
+  display: flex;
+  gap: 15px;
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.phoneNumber {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.phoneNumber a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .leftSection, .rightSection {
+    padding: 30px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 0;
+  }
+}
